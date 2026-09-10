@@ -4,9 +4,13 @@ import KineticText from './KineticText';
 import WaveGrid from './WaveGrid';
 import Shuffle from './Shuffle';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  className?: string;
+}
+
+const Hero: React.FC<HeroProps> = ({ className = '' }) => {
   return (
-    <section id="home" className="relative flex flex-col items-center justify-center pt-20 pb-20 md:pb-32 px-6 md:px-12 overflow-hidden min-h-[85vh] lg:min-h-screen">
+    <section id="home" className={`relative flex flex-col items-center justify-center pt-20 pb-20 md:pb-32 px-6 md:px-12 overflow-hidden min-h-[85vh] lg:min-h-screen ${className}`}>
       
       {/* 3D Wave Grid background */}
       <div className="absolute inset-0 pointer-events-none">

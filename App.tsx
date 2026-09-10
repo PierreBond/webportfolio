@@ -12,7 +12,7 @@ const App: React.FC = () => {
       <Navbar />
       
       <main className="flex-grow flex flex-col">
-        <Hero />
+        <Hero className="-mt-16" />
         <Expertise />
         <Projects />
         <Quote />
