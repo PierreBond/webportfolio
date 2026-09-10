@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-canvas: 3 3 3;
+    --color-text: 255 255 255;
+    --color-border: 229 231 235;
+    --color-accent: 115 255 185;
+    --color-ink: 0 0 0;
+    --color-selection-text: #030303;
+    --track: #030303;
+    --thumb: #333;
+  }
+
+  [data-theme="light"] {
+    --color-canvas: 255 255 255;
+    --color-text: 3 3 3;
+    --color-border: 209 213 219;
+    --color-accent: 5 150 105;
+    --color-ink: 245 245 245;
+    --color-selection-text: #ffffff;
+    --track: #f0f0f0;
+    --thumb: #ccc;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01" on;
+  }
+
+  ::selection {
+    background: rgb(var(--color-accent));
+    color: var(--color-selection-text);
+  }
+}
+
+/* ─── Theme-aware overrides (bypass Tailwind JIT cache issues) ─── */
+/* These apply directly via CSS so a server restart is NOT needed   */
+
+body,
+#root,
+#root > div {
+  background-color: rgb(var(--color-canvas)) !important;
+  color: rgb(var(--color-text));
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+/* Sections */
+section,
+nav,
+footer {
+  background-color: rgb(var(--color-canvas));
+  color: rgb(var(--color-text));
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+/* Border colors */
+[class*="border-silver"] {
+  border-color: rgb(var(--color-border) / 0.2);
+}
+
+/* Text */
+[class*="text-frost"] {
+  color: rgb(var(--color-text));
+  transition: color 0.35s ease;
+}
+
+/* Backgrounds */
+[class*="bg-obsidian"] {
+  background-color: rgb(var(--color-canvas));
+  transition: background-color 0.35s ease;
+}
+
+/* Tag pills */
+span[class*="bg-obsidian"] {
+  background-color: rgb(var(--color-canvas));
+  transition: background-color 0.35s ease;
+}
+
+/* ─── Custom scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--thumb);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ─── Marquee animation ─── */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
