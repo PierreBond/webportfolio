@@ -72,7 +72,7 @@ const Navbar: React.FC = () => {
           </div>
 
           <a
-            href="mailto:hello@devgeekz.com"
+            href="mailto:pierrebondonly@gmail.com"
             className="flex items-center gap-2 text-[14px] font-medium text-frost hover:text-mint transition-colors duration-200"
           >
             Connect
