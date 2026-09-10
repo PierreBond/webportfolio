@@ -12,21 +12,39 @@ interface Project {
 const projects: Project[] = [
   {
     id: "01",
-    title: "E-COMMERCE PLATFORM",
-    metricLabel: "PERFORMANCE",
-    metricValue: "98 Lighthouse"
+    title: "INFINITY GYM",
+    metricLabel: "TYPE",
+    metricValue: "Gym Landing Page"
   },
   {
     id: "02",
-    title: "SaaS DASHBOARD",
-    metricLabel: "USERS",
-    metricValue: "10K+ Active"
+    title: "FACENEED",
+    metricLabel: "TYPE",
+    metricValue: "E-Commerce Platform"
   },
   {
     id: "03",
-    title: "REAL-TIME COLLABORATION TOOL",
-    metricLabel: "UPTIME",
-    metricValue: "99.99%"
+    title: "SPORTANALYST",
+    metricLabel: "TYPE",
+    metricValue: "Sports Prediction Dashboard"
+  },
+  {
+    id: "04",
+    title: "SILO",
+    metricLabel: "TYPE",
+    metricValue: "Mobile App"
+  },
+  {
+    id: "05",
+    title: "INVENTORY ADVISOR",
+    metricLabel: "TYPE",
+    metricValue: "Mobile App"
+  },
+  {
+    id: "06",
+    title: "PLACEPAL",
+    metricLabel: "TYPE",
+    metricValue: "Mobile App"
   }
 ];
 
