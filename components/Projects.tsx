@@ -7,6 +7,7 @@ interface Project {
   title: string;
   metricLabel: string;
   metricValue: string;
+  link: string;
 }
 
 const projects: Project[] = [
@@ -14,37 +15,43 @@ const projects: Project[] = [
     id: "01",
     title: "INFINITY GYM",
     metricLabel: "TYPE",
-    metricValue: "Gym Landing Page"
+    metricValue: "Gym Landing Page",
+    link: "https://gym-template.pierrebond.workers.dev/"
   },
   {
     id: "02",
     title: "FACENEED",
     metricLabel: "TYPE",
-    metricValue: "E-Commerce Platform"
+    metricValue: "E-Commerce Platform",
+    link: "https://faceneed.pierrebond.workers.dev/"
   },
   {
     id: "03",
     title: "SPORTANALYST",
     metricLabel: "TYPE",
-    metricValue: "Sports Prediction Dashboard"
+    metricValue: "Sports Prediction Dashboard",
+    link: "https://github.com/PierreBond/sportanalyst"
   },
   {
     id: "04",
     title: "SILO",
     metricLabel: "TYPE",
-    metricValue: "Mobile App"
+    metricValue: "Mobile App",
+    link: "https://silo-sand.vercel.app/#/"
   },
   {
     id: "05",
     title: "INVENTORY ADVISOR",
     metricLabel: "TYPE",
-    metricValue: "Mobile App"
+    metricValue: "Mobile App",
+    link: "https://inventory-advisor.vercel.app/"
   },
   {
     id: "06",
     title: "PLACEPAL",
     metricLabel: "TYPE",
-    metricValue: "Mobile App"
+    metricValue: "Mobile App",
+    link: "https://aptsearch.pierrebond.workers.dev/"
   }
 ];
 
@@ -79,7 +86,10 @@ const Projects: React.FC = () => {
         <div className="flex flex-col">
           {projects.map((project, index) => (
             <Reveal key={project.id} delay={index * 150}>
-                <div 
+                <a 
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex flex-col md:flex-row md:items-center justify-between py-12 border-t border-silver/20 hover:border-mint/50 transition-all duration-300 cursor-pointer"
                 >
                 
@@ -103,7 +113,7 @@ const Projects: React.FC = () => {
                     </span>
                 </div>
 
-                </div>
+                </a>
             </Reveal>
           ))}
           {/* Bottom Border */}
