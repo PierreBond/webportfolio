@@ -36,21 +36,21 @@ const projects: Project[] = [
     id: "04",
     title: "SILO",
     metricLabel: "TYPE",
-    metricValue: "Mobile App",
+    metricValue: "Barter Trading Mobile App",
     link: "https://silo-sand.vercel.app/#/"
   },
   {
     id: "05",
     title: "INVENTORY ADVISOR",
     metricLabel: "TYPE",
-    metricValue: "Mobile App",
+    metricValue: "Offline Inventory Management Mobile App",
     link: "https://inventory-advisor.vercel.app/"
   },
   {
     id: "06",
     title: "PLACEPAL",
     metricLabel: "TYPE",
-    metricValue: "Mobile App",
+    metricValue: "Apartment Searching Mobile App",
     link: "https://aptsearch.pierrebond.workers.dev/"
   }
 ];

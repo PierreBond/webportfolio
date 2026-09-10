@@ -54,12 +54,12 @@ const Navbar: React.FC = () => {
         />
       </div>
       <div className="relative z-10 mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-        
+
         {/* Logo */}
         <a href="#home" onClick={toggleTheme} className="flex items-center gap-2 group">
           <span className="text-mint text-sm">✦</span>
           <span className="text-sm font-bold tracking-tight text-frost">
-            @devgeekz
+            @pierrebond
           </span>
         </a>
 
@@ -70,16 +70,16 @@ const Navbar: React.FC = () => {
             <a href="#expertise" className="hover:text-mint transition-colors duration-200">Expertise</a>
             <a href="#projects" className="hover:text-mint transition-colors duration-200">Projects</a>
           </div>
-          
-          <a 
-            href="mailto:hello@devgeekz.com" 
+
+          <a
+            href="mailto:hello@devgeekz.com"
             className="flex items-center gap-2 text-[14px] font-medium text-frost hover:text-mint transition-colors duration-200"
           >
             Connect
             <span className="material-symbols-outlined text-mint text-xs" aria-hidden="true">arrow_outward</span>
           </a>
         </div>
-        
+
       </div>
     </nav>
   );
