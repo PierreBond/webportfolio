@@ -47,7 +47,7 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
           <div className="md:col-span-6 lg:col-span-5">
             <Reveal delay={800}>
-                <p className="text-lg md:text-xl font-light leading-relaxed text-frost/70">
+                <p className="text-sm md:text-base font-light leading-relaxed text-frost/70">
                 Building performant web applications and modern interfaces where 
                 clean code meets seamless user experiences.
                 </p>
