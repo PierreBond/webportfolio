@@ -15,43 +15,57 @@ const skills: Skill[] = [
     id: "01",
     category: "FRAMEWORK",
     title: "React / Next.js",
-    description: "Building performant, component-driven interfaces with server-side rendering, static generation, and optimized bundle splitting.",
-    tags: ["TypeScript", "SSR"]
+    description: "Building performant, component-driven interfaces with React 19, Next.js, Vite, and React Router v7 for modern web applications.",
+    tags: ["React 19", "Next.js", "Vite", "TypeScript"]
   },
   {
     id: "02",
     category: "BACKEND",
-    title: "Node.js",
-    description: "Designing RESTful APIs and real-time services with Express and Fastify, focused on scalability and clean architecture.",
-    tags: ["Express", "PostgreSQL"]
+    title: "Node.js & APIs",
+    description: "Designing RESTful APIs and real-time services with Express, Prisma ORM, and PostgreSQL for scalable full-stack architecture.",
+    tags: ["Express", "Prisma", "PostgreSQL"]
   },
   {
     id: "03",
     category: "STYLING",
-    title: "CSS / Tailwind",
-    description: "Crafting responsive layouts and design systems with modern CSS, utility-first frameworks, and component libraries.",
-    tags: ["Tailwind", "Sass"]
+    title: "UI & Animation",
+    description: "Crafting responsive layouts and immersive interfaces with Tailwind CSS, Framer Motion, and GSAP scroll animations.",
+    tags: ["Tailwind", "Framer Motion", "GSAP"]
   },
   {
     id: "04",
-    category: "PERFORMANCE",
-    title: "Web Optimization",
-    description: "Core Web Vitals, lazy loading, code splitting, and caching strategies for lightning-fast load times.",
-    tags: ["Lighthouse", "CDN"]
+    category: "3D & INTERACTIVE",
+    title: "WebGL & 3D",
+    description: "Creating immersive 3D experiences with Three.js, React Three Fiber, and custom shaders for high-performance visuals.",
+    tags: ["Three.js", "R3F", "Shaders"]
   },
   {
     id: "05",
-    category: "DEVOPS",
-    title: "CI/CD & Cloud",
-    description: "Automating deployments with GitHub Actions, Docker, and cloud platforms for reliable, zero-downtime releases.",
-    tags: ["Docker", "AWS"]
+    category: "MOBILE & PWA",
+    title: "Mobile-First Apps",
+    description: "Building offline-first progressive web apps with PouchDB, service workers, and responsive mobile-first architectures.",
+    tags: ["PWA", "PouchDB", "Offline-First"]
   },
   {
     id: "06",
+    category: "QUALITY",
+    title: "Testing & Validation",
+    description: "Ensuring reliability with Vitest, Jest, React Testing Library, and Zod schema validation for type-safe data flows.",
+    tags: ["Vitest", "Jest", "Zod"]
+  },
+  {
+    id: "07",
+    category: "DEVOPS",
+    title: "CI/CD & Deployment",
+    description: "Automating deployments with GitHub Actions, Docker, and cloud platforms for reliable, zero-downtime releases.",
+    tags: ["Docker", "GitHub Actions", "Cloudflare"]
+  },
+  {
+    id: "08",
     category: "DATABASE",
-    title: "Data & APIs",
-    description: "Integrating SQL and NoSQL databases, GraphQL, and third-party APIs for full-stack data flows.",
-    tags: ["GraphQL", "MongoDB"]
+    title: "Data & Storage",
+    description: "Integrating SQL and NoSQL databases with Prisma ORM, PouchDB, and real-time data flows across the full stack.",
+    tags: ["PostgreSQL", "PouchDB", "Prisma"]
   }
 ];
 
