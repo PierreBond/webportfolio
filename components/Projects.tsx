@@ -23,7 +23,7 @@ const projects: Project[] = [
     title: "FACENEED",
     metricLabel: "TYPE",
     metricValue: "E-Commerce Platform",
-    link: "https://faceneed.pierrebond.workers.dev/"
+    link: "https://faceneed-production.up.railway.app/"
   },
   {
     id: "03",
