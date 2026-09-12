@@ -11,20 +11,20 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ className = '' }) => {
   return (
     <section id="home" className={`relative flex flex-col items-center justify-center pt-20 pb-20 md:pb-32 px-6 md:px-12 overflow-hidden min-h-[85vh] lg:min-h-screen ${className}`}>
-      
+
       {/* 3D Wave Grid background */}
       <div className="absolute inset-0 pointer-events-none">
         <WaveGrid />
       </div>
 
       <div className="max-w-[1440px] w-full mx-auto relative z-10">
-        
+
         {/* Top Label */}
         <Reveal delay={0}>
             <div className="flex items-center gap-4 mb-8">
             <span className="w-12 h-[1px] bg-mint"></span>
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-mint">
-                Senior Web Developer
+                Web Developer
             </span>
             </div>
         </Reveal>
@@ -48,12 +48,12 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
           <div className="md:col-span-6 lg:col-span-5">
             <Reveal delay={800}>
                 <p className="text-sm md:text-base font-light leading-relaxed text-frost/70">
-                Building performant web applications and modern interfaces where 
+                Building performant web applications and modern interfaces where
                 clean code meets seamless user experiences.
                 </p>
             </Reveal>
           </div>
-          
+
           <div className="md:col-span-6 lg:col-span-7 flex md:justify-end justify-start">
             <Reveal delay={1000} width="fit-content">
                 <div className="flex flex-col items-start md:items-end gap-2 text-frost">
