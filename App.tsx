@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Expertise from './components/Expertise';
 import Projects from './components/Projects';
-import Quote from './components/Quote';
+import About from './components/About';
 import Footer from './components/Footer';
 
 const App: React.FC = () => {
@@ -15,7 +15,7 @@ const App: React.FC = () => {
         <Hero className="-mt-16" />
         <Expertise />
         <Projects />
-        <Quote />
+        <About />
       </main>
 
       <Footer />
