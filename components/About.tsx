@@ -11,6 +11,9 @@ const About: React.FC = () => {
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-tight text-frost">
                 I'm PierreBond ; a fullstack engineer and I build everything.
                 </h2>
+                <p className="mt-10 text-sm md:text-base text-frost/50 ">
+                "Everything in life has the next step in common." — Michael Beasley
+                </p>
             </div>
 
             <div className="md:col-span-4 flex flex-col justify-between items-start md:items-end md:text-right h-full min-h-[160px]">
