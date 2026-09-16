@@ -6,9 +6,10 @@ import Shuffle from './Shuffle';
 
 interface HeroProps {
   className?: string;
+  ready?: boolean;
 }
 
-const Hero: React.FC<HeroProps> = ({ className = '' }) => {
+const Hero: React.FC<HeroProps> = ({ className = '', ready = true }) => {
   return (
     <section id="home" className={`relative flex flex-col items-center justify-center pt-20 pb-20 md:pb-32 px-6 md:px-12 overflow-hidden min-h-[85vh] lg:min-h-screen ${className}`}>
 
@@ -20,7 +21,7 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
       <div className="max-w-[1440px] w-full mx-auto relative z-10">
 
         {/* Top Label */}
-        <Reveal delay={0}>
+        <Reveal delay={0} ready={ready}>
             <div className="flex items-center gap-4 mb-8">
             <span className="w-12 h-[1px] bg-mint"></span>
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-mint">
@@ -32,13 +33,13 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
         {/* Main Headline */}
         <div className="text-5xl sm:text-6xl md:text-8xl lg:text-[clamp(5rem,8vw,120px)] font-bold leading-[0.9] tracking-tight mb-12 max-w-7xl text-frost">
            <div className="block">
-              <KineticText text="WEB" delayOffset={200} />
+              <KineticText text="WEB" delayOffset={200} ready={ready} />
             </div>
             <div className="block">
-              <KineticText text="DEVELOPER" className="text-mint" delayOffset={350} />
+              <KineticText text="DEVELOPER" className="text-mint" delayOffset={350} ready={ready} />
             </div>
             <div className="block">
-              <KineticText text="FULL-STACK | REACT" delayOffset={500} />
+              <KineticText text="FULL-STACK | REACT" delayOffset={500} ready={ready} />
               <span className="sr-only">FULL-STACK | REACT</span>
            </div>
         </div>
@@ -46,7 +47,7 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
         {/* Description & Location Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
           <div className="md:col-span-6 lg:col-span-5">
-            <Reveal delay={800}>
+            <Reveal delay={800} ready={ready}>
                 <p className="text-sm md:text-base font-light leading-relaxed text-frost/70">
                 Building performant web applications and modern interfaces where
                 clean code meets seamless user experiences.
@@ -55,7 +56,7 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
           </div>
 
           <div className="md:col-span-6 lg:col-span-7 flex md:justify-end justify-start">
-            <Reveal delay={1000} width="fit-content">
+            <Reveal delay={1000} width="fit-content" ready={ready}>
                 <div className="flex flex-col items-start md:items-end gap-2 text-frost">
                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Location</span>
                 <Shuffle
@@ -81,7 +82,7 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
       </div>
 
       {/* Scroll Indicator */}
-      <Reveal delay={1200} className="absolute bottom-0 left-1/2 -translate-x-1/2">
+      <Reveal delay={1200} className="absolute bottom-0 left-1/2 -translate-x-1/2" ready={ready}>
         <div className="flex flex-col items-center gap-4 group cursor-pointer pb-8">
             <span className="text-[10px] font-bold uppercase tracking-[0.4em] opacity-40 group-hover:opacity-100 transition-opacity duration-500 text-frost">
             Scroll to explore

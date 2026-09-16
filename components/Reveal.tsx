@@ -4,8 +4,9 @@ interface RevealProps {
   children: React.ReactNode;
   width?: "fit-content" | "100%";
   className?: string;
-  delay?: number; // Delay in ms
-  duration?: number; // Duration in ms
+  delay?: number;
+  duration?: number;
+  ready?: boolean;
 }
 
 const Reveal: React.FC<RevealProps> = ({ 
@@ -13,19 +14,22 @@ const Reveal: React.FC<RevealProps> = ({
   width = "100%", 
   className = "",
   delay = 0,
-  duration = 1000
+  duration = 1000,
+  ready = true
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!ready) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        if (entry.isIntersecting) setIsVisible(true);
       },
       {
-        threshold: 0.1, // Trigger when 10% is visible
-        rootMargin: "0px 0px -50px 0px" // Slight bottom offset trigger
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
       }
     );
 
@@ -36,7 +40,7 @@ const Reveal: React.FC<RevealProps> = ({
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [ready]);
 
   return (
     <div

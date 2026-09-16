@@ -6,7 +6,8 @@ interface KineticTextProps {
   className?: string;
   duration?: number;
   stagger?: number;
-  delayOffset?: number; // Additional initial delay
+  delayOffset?: number;
+  ready?: boolean;
 }
 
 const KineticText: React.FC<KineticTextProps> = ({
@@ -15,15 +16,18 @@ const KineticText: React.FC<KineticTextProps> = ({
   className = '',
   duration = 800,
   stagger = 20,
-  delayOffset = 0
+  delayOffset = 0,
+  ready = true
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    if (!ready) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        if (entry.isIntersecting) setIsVisible(true);
       },
       { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
@@ -33,7 +37,7 @@ const KineticText: React.FC<KineticTextProps> = ({
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [ready]);
 
   const words = text.split(' ');
 
