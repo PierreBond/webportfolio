@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Expertise from './components/Expertise';
 import Projects from './components/Projects';
 import About from './components/About';
 import Footer from './components/Footer';
-import NotFound from './components/NotFound';
 import LoadingScreen from './components/LoadingScreen';
+
+const NotFound = React.lazy(() => import('./components/NotFound'));
 
 const VALID_PATHS = ['/', '/index.html'];
 
@@ -28,7 +29,9 @@ const App: React.FC = () => {
   if (notFound) {
     return (
       <div className="relative min-h-screen flex flex-col font-sans bg-obsidian text-frost selection:bg-mint selection:text-obsidian">
-        <NotFound />
+        <Suspense fallback={null}>
+          <NotFound />
+        </Suspense>
         <Footer />
       </div>
     );

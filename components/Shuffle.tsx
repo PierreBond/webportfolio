@@ -1,11 +1,28 @@
 import React, { useRef, useEffect, useState, useMemo } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SplitText as GSAPSplitText } from 'gsap/SplitText';
 import { useGSAP } from '@gsap/react';
 import './Shuffle.css';
 
-gsap.registerPlugin(ScrollTrigger, GSAPSplitText, useGSAP);
+// Lazy-load GSAP plugins once, cache for all Shuffle instances
+let pluginsPromise: Promise<{ ScrollTrigger: any; SplitText: any }> | null = null;
+let cachedPlugins: { ScrollTrigger: any; SplitText: any } | null = null;
+
+function loadPlugins() {
+  if (cachedPlugins) return Promise.resolve(cachedPlugins);
+  if (!pluginsPromise) {
+    pluginsPromise = Promise.all([
+      import('gsap/ScrollTrigger'),
+      import('gsap/SplitText'),
+    ]).then(([st, sp]) => {
+      const ScrollTrigger = st.ScrollTrigger;
+      const SplitText = sp.SplitText;
+      gsap.registerPlugin(ScrollTrigger, SplitText);
+      cachedPlugins = { ScrollTrigger, SplitText };
+      return cachedPlugins;
+    });
+  }
+  return pluginsPromise;
+}
 
 type ShuffleDirection = 'right' | 'left' | 'up' | 'down';
 type AnimationMode = 'evenodd' | 'random';
@@ -63,9 +80,10 @@ const Shuffle = ({
 }: ShuffleProps) => {
   const ref = useRef<HTMLElement>(null);
   const [fontsLoaded, setFontsLoaded] = useState(false);
+  const [pluginsLoaded, setPluginsLoaded] = useState(false);
   const [ready, setReady] = useState(false);
 
-  const splitRef = useRef<GSAPSplitText | null>(null);
+  const splitRef = useRef<any | null>(null);
   const wrappersRef = useRef<HTMLElement[]>([]);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const playingRef = useRef(false);
@@ -79,6 +97,10 @@ const Shuffle = ({
     }
   }, []);
 
+  useEffect(() => {
+    loadPlugins().then(() => setPluginsLoaded(true));
+  }, []);
+
   const scrollTriggerStart = useMemo(() => {
     const startPct = (1 - threshold) * 100;
     const mm = /^(-?\d+(?:\.\d+)?)(px|em|rem|%)?$/.exec(rootMargin || '');
@@ -90,7 +112,7 @@ const Shuffle = ({
 
   useGSAP(
     () => {
-      if (!ref.current || !text || !fontsLoaded) return;
+      if (!ref.current || !text || !fontsLoaded || !pluginsLoaded || !cachedPlugins) return;
       if (respectReducedMotion && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         setReady(true);
         onShuffleComplete?.();
@@ -133,7 +155,7 @@ const Shuffle = ({
       const build = () => {
         teardown();
 
-        splitRef.current = new GSAPSplitText(el, {
+        splitRef.current = new cachedPlugins.SplitText(el, {
           type: 'chars',
           charsClass: 'shuffle-char',
           wordsClass: 'shuffle-word',
@@ -370,7 +392,7 @@ const Shuffle = ({
         setReady(true);
       };
 
-      const st = ScrollTrigger.create({
+      const st = cachedPlugins.ScrollTrigger.create({
         trigger: el,
         start,
         once: triggerOnce,
@@ -392,6 +414,7 @@ const Shuffle = ({
         ease,
         scrollTriggerStart,
         fontsLoaded,
+        pluginsLoaded,
         shuffleDirection,
         shuffleTimes,
         animationMode,

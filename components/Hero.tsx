@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Reveal from './Reveal';
 import KineticText from './KineticText';
-import WaveGrid from './WaveGrid';
 import Shuffle from './Shuffle';
+
+const WaveGrid = React.lazy(() => import('./WaveGrid'));
 
 interface HeroProps {
   className?: string;
@@ -15,7 +16,9 @@ const Hero: React.FC<HeroProps> = ({ className = '', ready = true }) => {
 
       {/* 3D Wave Grid background */}
       <div className="absolute inset-0 pointer-events-none">
-        <WaveGrid />
+        <Suspense fallback={null}>
+          <WaveGrid />
+        </Suspense>
       </div>
 
       <div className="max-w-[1440px] w-full mx-auto relative z-10">
@@ -31,7 +34,7 @@ const Hero: React.FC<HeroProps> = ({ className = '', ready = true }) => {
         </Reveal>
 
         {/* Main Headline */}
-        <div className="text-5xl sm:text-6xl md:text-8xl lg:text-[clamp(5rem,8vw,120px)] font-bold leading-[0.9] tracking-tight mb-12 max-w-7xl text-frost">
+        <div className="text-3xl sm:text-5xl md:text-8xl lg:text-[clamp(5rem,8vw,120px)] font-bold leading-[0.9] tracking-tight mb-12 max-w-7xl text-frost">
            <div className="block">
               <KineticText text="WEB" delayOffset={200} ready={ready} />
             </div>

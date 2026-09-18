@@ -72,10 +72,14 @@ const projects: Project[] = [
 const Projects: React.FC = () => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
+  const toggleExpand = (id: string) => {
+    setExpandedId(prev => prev === id ? null : id);
+  };
+
   return (
     <section id="projects" className="bg-obsidian py-24 px-6 md:px-12 relative">
       <div className="max-w-[1440px] mx-auto">
-
+        
         {/* Header Section */}
         <Reveal>
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
@@ -89,7 +93,7 @@ const Projects: React.FC = () => {
                   <KineticText text="deployments." delayOffset={150} />
                 </h2>
             </div>
-
+            
             <div className="pb-2">
                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-frost/60">
                 Archive V2.0 // Active
@@ -103,38 +107,40 @@ const Projects: React.FC = () => {
           {projects.map((project, index) => (
             <Reveal key={project.id} delay={index * 150}>
                 <div
-                className="border-t border-silver/20"
+                className="border-t border-silver/20 cursor-pointer"
                 onMouseEnter={() => setExpandedId(project.id)}
                 onMouseLeave={() => setExpandedId(null)}
+                onClick={() => toggleExpand(project.id)}
                 >
-                <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col md:flex-row md:items-center justify-between py-12 hover:border-mint/50 transition-all duration-300 cursor-pointer"
-                >
-
+                <div className="flex flex-col md:flex-row md:items-center justify-between py-12">
+                
                 {/* Left: ID & Title */}
-                <div className="flex items-baseline gap-8 md:gap-16">
+                <div className="flex items-baseline gap-4 md:gap-16">
                     <span className="text-xs font-bold text-mint opacity-80 font-mono">
                     {project.id}
                     </span>
-                    <h3 className="text-2xl md:text-4xl font-bold uppercase tracking-tight group-hover:text-mint transition-colors duration-300 text-frost">
-                    {project.title}
-                    </h3>
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-2xl md:text-4xl font-bold uppercase tracking-tight text-frost hover:text-mint transition-colors duration-300"
+                    >
+                      {project.title}
+                    </a>
                 </div>
 
                 {/* Right: Metrics */}
-                <div className="flex flex-col md:items-end mt-4 md:mt-0 pl-12 md:pl-0">
+                <div className="flex flex-col md:items-end mt-4 md:mt-0 pl-8 md:pl-0">
                     <span className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40 mb-1 text-frost">
                     {project.metricLabel}
                     </span>
-                    <span className="text-lg md:text-xl font-bold font-mono text-frost group-hover:text-mint transition-colors duration-300">
+                    <span className="text-base md:text-xl font-bold font-mono text-frost">
                     {project.metricValue}
                     </span>
                 </div>
 
-                </a>
+                </div>
 
                 {/* Expanded Content */}
                 <div
@@ -144,7 +150,7 @@ const Projects: React.FC = () => {
                     opacity: expandedId === project.id ? 1 : 0,
                 }}
                 >
-                <div className="pb-8 pl-12 md:pl-[72px]">
+                <div className="pb-8 pl-8 md:pl-[72px]">
                     <p className="text-sm text-frost/60 mb-4 max-w-xl">
                     {project.description}
                     </p>

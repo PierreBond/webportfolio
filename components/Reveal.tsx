@@ -19,9 +19,13 @@ const Reveal: React.FC<RevealProps> = ({
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const prefersReduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   useEffect(() => {
-    if (!ready) return;
+    if (!ready || prefersReduced) {
+      if (prefersReduced) setIsVisible(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -40,7 +44,7 @@ const Reveal: React.FC<RevealProps> = ({
     return () => {
       observer.disconnect();
     };
-  }, [ready]);
+  }, [ready, prefersReduced]);
 
   return (
     <div

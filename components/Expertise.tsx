@@ -98,7 +98,7 @@ const Expertise: React.FC = () => {
           {skills.map((skill, index) => (
             <Reveal key={skill.id} delay={index * 100} className="border-r border-b border-silver/20">
                 <div 
-                className="group p-10 flex flex-col min-h-[320px] transition-colors duration-500 hover:bg-mint/10 h-full"
+                className="group p-6 md:p-10 flex flex-col min-h-[280px] md:min-h-[320px] transition-colors duration-500 hover:bg-mint/10 h-full"
                 >
                 <span className="text-xs font-bold text-mint mb-12">
                     {skill.id} / {skill.category}

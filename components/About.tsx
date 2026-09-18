@@ -16,15 +16,13 @@ const About: React.FC = () => {
                 </p>
             </div>
 
-            <div className="md:col-span-4 flex flex-col justify-between items-start md:items-end md:text-right h-full min-h-[160px]">
+            <div className="md:col-span-4 flex flex-col justify-between items-start md:items-end md:text-right h-full min-h-[100px] md:min-h-[160px]">
                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40 text-frost">
                 About Me
                 </span>
 
                 <div className="w-16 h-16 border border-silver/20 rounded-full flex items-center justify-center mt-auto hover:bg-frost/5 transition-colors duration-300">
-                <span className="material-symbols-outlined text-mint text-2xl">
-                    code
-                </span>
+                <svg className="w-6 h-6 text-mint" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                 </div>
             </div>
             </div>

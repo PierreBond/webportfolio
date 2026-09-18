@@ -4,7 +4,7 @@ import GlassSurface from './GlassSurface';
 const getInitialTheme = (): string => {
   const stored = localStorage.getItem('theme');
   if (stored === 'light' || stored === 'dark') return stored;
-  return 'light'; // ponytail: default to light
+  return 'light';
 };
 
 const Navbar: React.FC = () => {
@@ -13,6 +13,7 @@ const Navbar: React.FC = () => {
     if (initial === 'light') document.documentElement.dataset.theme = 'light';
     return initial;
   });
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const html = document.documentElement;
@@ -36,6 +37,8 @@ const Navbar: React.FC = () => {
   }, []);
 
   const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+
+  const closeMobile = () => setMobileOpen(false);
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-transparent">
@@ -63,7 +66,7 @@ const Navbar: React.FC = () => {
           </span>
         </a>
 
-        {/* Links */}
+        {/* Desktop Links */}
         <div className="flex items-center gap-8">
           <div className="hidden md:flex items-center gap-8 text-[14px] font-medium text-frost">
             <a href="#home" className="hover:text-mint transition-colors duration-200">Home</a>
@@ -73,13 +76,43 @@ const Navbar: React.FC = () => {
 
           <a
             href="mailto:pierrebondonly@gmail.com"
-            className="flex items-center gap-2 text-[14px] font-medium text-frost hover:text-mint transition-colors duration-200"
+            className="hidden md:flex items-center gap-2 text-[14px] font-medium text-frost hover:text-mint transition-colors duration-200"
           >
             Connect
-            <span className="material-symbols-outlined text-mint text-xs" aria-hidden="true">arrow_outward</span>
+            <svg className="w-3 h-3 text-mint" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
           </a>
+
+          {/* Hamburger */}
+          <button
+            onClick={() => setMobileOpen(prev => !prev)}
+            className="md:hidden flex flex-col gap-1.5 p-2 -mr-2"
+            aria-label="Toggle menu"
+          >
+            <span className={`block w-5 h-[1.5px] bg-frost transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-[4.5px]' : ''}`} />
+            <span className={`block w-5 h-[1.5px] bg-frost transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-5 h-[1.5px] bg-frost transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-[4.5px]' : ''}`} />
+          </button>
         </div>
 
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileOpen ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}
+      >
+        <div className="relative z-10 px-6 pb-6 flex flex-col gap-4 text-[14px] font-medium text-frost">
+          <a href="#home" onClick={closeMobile} className="hover:text-mint transition-colors duration-200">Home</a>
+          <a href="#expertise" onClick={closeMobile} className="hover:text-mint transition-colors duration-200">Expertise</a>
+          <a href="#projects" onClick={closeMobile} className="hover:text-mint transition-colors duration-200">Projects</a>
+          <a
+            href="mailto:pierrebondonly@gmail.com"
+            onClick={closeMobile}
+            className="flex items-center gap-2 hover:text-mint transition-colors duration-200"
+          >
+            Connect
+            <svg className="w-3 h-3 text-mint" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+          </a>
+        </div>
       </div>
     </nav>
   );

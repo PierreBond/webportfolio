@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
 
         <Clock />
 
-        <div className="flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-frost">
+        <div className="flex gap-4 md:gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-frost">
           <a href="https://github.com/PierreBond" className="hover:text-mint transition-colors duration-300">GitHub</a>
           <a href="https://www.linkedin.com/in/perry-antwi-a13b49265/" className="hover:text-mint transition-colors duration-300">LinkedIn</a>
           <a href="https://x.com/404nullerr" className="hover:text-mint transition-colors duration-300">Twitter (X)</a>

@@ -21,9 +21,13 @@ const KineticText: React.FC<KineticTextProps> = ({
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLElement>(null);
+  const prefersReduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   useEffect(() => {
-    if (!ready) return;
+    if (!ready || prefersReduced) {
+      if (prefersReduced) setIsVisible(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -37,7 +41,7 @@ const KineticText: React.FC<KineticTextProps> = ({
     }
 
     return () => observer.disconnect();
-  }, [ready]);
+  }, [ready, prefersReduced]);
 
   const words = text.split(' ');
 
