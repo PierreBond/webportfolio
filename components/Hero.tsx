@@ -12,7 +12,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ className = '', ready = true }) => {
   return (
-    <section id="home" className={`relative flex flex-col items-center justify-center pt-20 pb-20 md:pb-32 px-6 md:px-12 overflow-hidden min-h-[85vh] lg:min-h-screen ${className}`}>
+    <section id="home" className={`relative flex flex-col items-center justify-center pt-20 pb-32 md:pb-32 px-6 md:px-12 overflow-hidden min-h-[85vh] lg:min-h-screen ${className}`}>
 
       {/* 3D Wave Grid background */}
       <div className="absolute inset-0 pointer-events-none">
@@ -34,7 +34,7 @@ const Hero: React.FC<HeroProps> = ({ className = '', ready = true }) => {
         </Reveal>
 
         {/* Main Headline */}
-        <div className="text-3xl sm:text-5xl md:text-8xl lg:text-[clamp(5rem,8vw,120px)] font-bold leading-[0.9] tracking-tight mb-12 max-w-7xl text-frost">
+        <div className="text-3xl sm:text-5xl md:text-8xl lg:text-[clamp(5rem,8vw,120px)] font-bold leading-[0.9] tracking-tight mb-16 md:mb-12 max-w-7xl text-frost">
            <div className="block">
               <KineticText text="WEB" delayOffset={200} ready={ready} />
             </div>
@@ -48,7 +48,7 @@ const Hero: React.FC<HeroProps> = ({ className = '', ready = true }) => {
         </div>
 
         {/* Description & Location Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-12 items-end">
           <div className="md:col-span-6 lg:col-span-5">
             <Reveal delay={800} ready={ready}>
                 <p className="text-sm md:text-base font-light leading-relaxed text-frost/70">
@@ -85,7 +85,7 @@ const Hero: React.FC<HeroProps> = ({ className = '', ready = true }) => {
       </div>
 
       {/* Scroll Indicator */}
-      <Reveal delay={1200} className="absolute bottom-0 left-1/2 -translate-x-1/2" ready={ready}>
+      <Reveal delay={1200} className="hidden md:block absolute bottom-0 left-1/2 -translate-x-1/2" ready={ready}>
         <div className="flex flex-col items-center gap-4 group cursor-pointer pb-8">
             <span className="text-[10px] font-bold uppercase tracking-[0.4em] opacity-40 group-hover:opacity-100 transition-opacity duration-500 text-frost">
             Scroll to explore
