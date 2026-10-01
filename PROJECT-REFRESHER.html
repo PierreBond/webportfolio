@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Project Refresher — PierreBond</title>
+<style>
+  @page { margin: 18mm 16mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #111; font-size: 10.5pt; line-height: 1.45; }
+  h1 { font-size: 20pt; margin-bottom: 2px; }
+  .sub { color: #555; font-size: 9.5pt; margin-bottom: 18px; border-bottom: 2px solid #111; padding-bottom: 10px; }
+  .project { margin-bottom: 22px; page-break-inside: avoid; }
+  h2 { font-size: 13pt; margin-bottom: 3px; }
+  .type { font-size: 9pt; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .desc { margin-bottom: 6px; }
+  .label { font-weight: 700; font-size: 9.5pt; text-transform: uppercase; letter-spacing: .5px; margin-top: 6px; color: #333; }
+  ul { margin: 3px 0 0 18px; }
+  li { margin-bottom: 2px; }
+  .stack { font-size: 9.5pt; background: #f0f0f0; padding: 2px 6px; display: inline-block; margin-top: 4px; }
+  .talk { font-style: italic; color: #444; margin-top: 5px; font-size: 10pt; }
+</style>
+</head>
+<body>
+
+<h1>Project Refresher</h1>
+<div class="sub">PierreBond — 6 portfolio projects · descriptions, tech stack, implementation &amp; talking points</div>
+
+<div class="project">
+  <h2>1. Infinity Gym</h2>
+  <div class="type">Immersive Gym Website</div>
+  <div class="desc">Immersive gym website with 3D graphics, smooth scrolling, and AI integration.</div>
+  <div class="label">Tech Stack</div>
+  <div class="stack">React 19 · Vite · TypeScript · Tailwind CSS 4 · Three.js · GSAP · Lenis · Express · Google Gemini AI</div>
+  <div class="label">Architecture</div>
+  <ul>
+    <li>React SPA frontend (Vite) + small Express backend for AI endpoints.</li>
+    <li>3D scenes built with Three.js; scroll animations driven by GSAP + Lenis smooth scroll.</li>
+    <li>Google Gemini API integrated through the Express backend (API key stays server-side).</li>
+  </ul>
+  <div class="label">Key Implementation</div>
+  <ul>
+    <li><b>Three.js scenes:</b> custom 3D geometry + lighting rendered behind the content, performance kept in check with capped pixel ratio.</li>
+    <li><b>GSAP scroll timelines:</b> ScrollTrigger pin + scrub animations; SplitType for per-character text reveals.</li>
+    <li><b>Lenis:</b> hijacks native scroll for buttery 60fps scrolling, synced to GSAP ticker.</li>
+    <li><b>Infinite dragging slider:</b> GSAP Draggable + modulo loop (Osmo technique).</li>
+    <li><b>AI feature:</b> frontend POSTs to Express → calls Gemini → returns response (keeps key hidden).</li>
+  </ul>
+  <div class="label">How to explain it</div>
+  <div class="talk">"I built a fully animated gym site — 3D scenes with Three.js, scroll-driven GSAP timelines, Lenis smooth scrolling, and a Gemini AI chat feature behind an Express proxy. The trickiest part was syncing Lenis with GSAP's ticker so scroll animations stayed in sync."</div>
+</div>
+
+<div class="project">
+  <h2>2. Faceneed</h2>
+  <div class="type">Beauty E-Commerce Platform</div>
+  <div class="desc">Luxury beauty e-commerce platform for premium skincare and makeup products.</div>
+  <div class="label">Tech Stack</div>
+  <div class="stack">React 19 · Vite · TypeScript · Tailwind CSS 4 · Framer Motion · Zustand · Recharts</div>
+  <div class="label">Architecture</div>
+  <ul>
+    <li>Frontend-only SPA — product data managed in-app; state via Zustand stores.</li>
+    <li>Pages: catalog, product detail, cart, wishlist, admin dashboard.</li>
+    <li>Admin dashboard uses Recharts for sales/order analytics.</li>
+  </ul>
+  <div class="label">Key Implementation</div>
+  <ul>
+    <li><b>Zustand stores:</b> cart + wishlist stores persist to localStorage automatically (middleware).</li>
+    <li><b>Dynamic theming:</b> page-specific color palettes swapped via CSS custom properties on route change.</li>
+    <li><b>Glassmorphism UI:</b> backdrop-filter blur layers + Framer Motion page transitions.</li>
+    <li><b>Real-time search/filter:</b> catalog filters computed reactively from store state (no API calls).</li>
+  </ul>
+  <div class="label">How to explain it</div>
+  <div class="talk">"It's a luxury e-commerce SPA. State lives in Zustand stores that auto-persist cart and wishlist to localStorage. Each page has its own color palette applied through CSS variables, and Framer Motion handles the page transitions for that premium feel."</div>
+</div>
+
+<div class="project">
+  <h2>3. SportAnalyst</h2>
+  <div class="type">Sports Prediction Dashboard</div>
+  <div class="desc">Sports prediction dashboard with real-time data and ML explainability.</div>
+  <div class="label">Tech Stack</div>
+  <div class="stack">Next.js 16 · TypeScript · Tailwind CSS · FastAPI (Python) · PostgreSQL · XGBoost · WebSockets · Jest</div>
+  <div class="label">Architecture</div>
+  <ul>
+    <li>Next.js frontend + FastAPI backend + PostgreSQL (Docker Compose: 3 containers).</li>
+    <li>XGBoost ML model (68% accuracy, 9 leagues) served by FastAPI.</li>
+    <li>Alembic for DB migrations; CI/CD pipeline; PDF report export.</li>
+  </ul>
+  <div class="label">Key Implementation</div>
+  <ul>
+    <li><b>Prediction pipeline:</b> batch job scores 500+ matches; XGBoost predicts outcomes with confidence scores.</li>
+    <li><b>Value bet detection:</b> compares model probabilities against live bookmaker odds — flags edge cases.</li>
+    <li><b>SHAP explainability:</b> waterfall charts show which features drove each prediction.</li>
+    <li><b>Real-time odds:</b> WebSockets push live odds/line movements to the dashboard.</li>
+    <li><b>Testing:</b> Jest + React Testing Library full suite on the frontend.</li>
+  </ul>
+  <div class="label">How to explain it</div>
+  <div class="talk">"Full-stack sports prediction platform. An XGBoost model trained on 9 leagues makes predictions, and I compare its probabilities against live bookmaker odds to find value bets. SHAP charts explain every prediction, WebSockets stream live odds, and the whole thing runs on Docker Compose with FastAPI and Next.js."</div>
+</div>
+
+<div class="project">
+  <h2>4. Silo</h2>
+  <div class="type">Barter Trading Mobile App</div>
+  <div class="desc">Mobile-first barter trading app — list items, find trades, chat with partners.</div>
+  <div class="label">Tech Stack</div>
+  <div class="stack">React 19 · TypeScript · Tailwind CSS 4 · Framer Motion · React Router v7 · Vitest · React Testing Library</div>
+  <div class="label">Architecture</div>
+  <ul>
+    <li>Mobile-first SPA (single-column layout, touch-friendly).</li>
+    <li>Client-side routing via React Router v7; state via local hooks + localStorage.</li>
+    <li>Full test suite with Vitest + React Testing Library.</li>
+  </ul>
+  <div class="label">Key Implementation</div>
+  <ul>
+    <li><b>Core flows:</b> feed → item detail → propose trade → counter-offers → chat.</li>
+    <li><b>Map discovery:</b> items plotted geographically for local bartering.</li>
+    <li><b>Real-time chat:</b> message threads per trade with optimistic UI updates.</li>
+    <li><b>Trade engine:</b> propose / accept / counter-offer state machine per trade.</li>
+    <li><b>Testing:</b> Vitest unit + integration tests covering trade logic and components.</li>
+  </ul>
+  <div class="label">How to explain it</div>
+  <div class="talk">"Mobile-first barter app — you list items, discover nearby trades on a map, propose trades with counter-offers, and chat with partners. The interesting part was the trade state machine (propose/accept/counter) and making it fully tested with Vitest."</div>
+</div>
+
+<div class="project">
+  <h2>5. Inventory Advisor</h2>
+  <div class="type">Offline Inventory Management PWA</div>
+  <div class="desc">Offline-first inventory management progressive web app.</div>
+  <div class="label">Tech Stack</div>
+  <div class="stack">React 19 · Vite · Tailwind CSS 4 · PouchDB · React Router v7 · vite-plugin-pwa</div>
+  <div class="label">Architecture</div>
+  <ul>
+    <li>PWA with service worker — installable, works with zero connectivity.</li>
+    <li>PouchDB (IndexedDB wrapper) as the local database — no backend required.</li>
+    <li>React Router v7 for app navigation; manifest + service worker via vite-plugin-pwa.</li>
+  </ul>
+  <div class="label">Key Implementation</div>
+  <ul>
+    <li><b>Offline-first design:</b> all reads/writes go to PouchDB first; UI never blocks on network.</li>
+    <li><b>Service worker:</b> caches the app shell so it loads instantly on repeat visits.</li>
+    <li><b>PouchDB sync (optional):</b> can replicate to a CouchDB-compatible server when online.</li>
+    <li><b>CRUD:</b> inventory items (add/edit/delete/quantity) persisted in IndexedDB.</li>
+  </ul>
+  <div class="label">How to explain it</div>
+  <div class="talk">"Offline-first inventory PWA. All data lives in PouchDB on the device — IndexedDB under the hood — so it works with no internet at all. The service worker caches the app shell, and it's installable to the home screen. Can optionally sync to a server when back online."</div>
+</div>
+
+<div class="project">
+  <h2>6. PlacePal</h2>
+  <div class="type">Apartment Search Platform</div>
+  <div class="desc">Full-stack apartment search platform with map-based discovery.</div>
+  <div class="label">Tech Stack</div>
+  <div class="stack">React 19 · Express · Prisma ORM · PostgreSQL (Neon) · Leaflet/React-Leaflet · WebSockets · Zod · Multer · JWT auth · Docker</div>
+  <div class="label">Architecture</div>
+  <ul>
+    <li>React frontend + Express REST API + PostgreSQL (Neon) via Prisma ORM.</li>
+    <li>JWT + bcrypt authentication; Docker Compose for the database.</li>
+    <li>Deployed: frontend on Vercel, backend on Railway.</li>
+  </ul>
+  <div class="label">Key Implementation</div>
+  <ul>
+    <li><b>Map discovery:</b> React-Leaflet renders apartment listings as markers/clusters; click → detail panel.</li>
+    <li><b>Auth flow:</b> JWT issued on login, attached as Bearer header; bcrypt hashes passwords.</li>
+    <li><b>Zod validation:</b> request bodies validated at the API boundary before hitting Prisma.</li>
+    <li><b>Image upload:</b> Multer handles multipart uploads (listings photos), stored server-side.</li>
+    <li><b>Real-time updates:</b> WebSockets broadcast listing changes to all connected users.</li>
+    <li><b>Rate limiting + CORS:</b> Express middleware protects the API.</li>
+  </ul>
+  <div class="label">How to explain it</div>
+  <div class="talk">"Full-stack apartment search — browse listings on an interactive Leaflet map, JWT auth, Zod-validated API, Multer image uploads, and WebSockets for live listing updates. Prisma on Postgres, Docker for the DB, deployed frontend on Vercel and backend on Railway."</div>
+</div>
+
+</body>
+</html>

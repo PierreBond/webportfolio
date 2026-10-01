@@ -1,0 +1,189 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%-------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-6pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-6pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-6pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}, itemsep=3pt, parsep=0pt]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=1pt, parsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-3pt}}
+
+%-------------------------------------------
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Perry Bekoe Antwi} \\ \vspace{1pt}
+    \small +212-682451737 $|$ \href{mailto:pierrebondonly@gmail.com}{\underline{pierrebondonly@gmail.com}} $|$ 
+    \href{https://github.com/PierreBond}{\underline{github.com/PierreBond}} $|$
+    \href{https://pierrebond.dev}{\underline{pierrebond.dev}} \\ \vspace{1pt}
+    \textit{Full-Stack Engineer}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Faculty of Sciences and Techniques of Settat}{Settat, MA}
+      {Bachelor's Degree in Computer Engineering}{Sep. 2022 -- Jun. 2023}
+
+    \resumeSubheading
+      {Faculty of Sciences and Techniques of Settat}{Settat, MA}
+      {University Diploma in Electrical and Mechanical Engineering}{Sep. 2020 -- Jun. 2022}
+
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Full-Stack MERN Developer}{2024}
+      {Ark-x Talent Factory -- JobInTech Program}{Casablanca, MA}
+      \resumeItemListStart
+        \resumeItem{Designed and developed responsive UIs with React.js and Next.js.}
+        \resumeItem{Built RESTful APIs with Node.js/Express.js; managed MongoDB with full CRUD operations and data validation.}
+        \resumeItem{Full development cycles: Git, API testing with Postman, Agile collaboration.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Undergraduate Research Assistant}{Jan 2023}
+      {Faculty of Sciences and Techniques of Settat}{University Office, Settat}
+      \resumeItemListStart
+        \resumeItem{Developed real-time multi-chat applications with Python, Socket.io, Express.js, and MongoDB.}
+        \resumeItem{Created full-stack recruitment platform with AI models for CV verification and scoring.}
+        \resumeItem{Implemented PostgreSQL optimization, replication, and security protocols for sensitive data.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+          {\textbf{SportAnalyst — Sports Prediction Dashboard} \emph{}}{}
+          \resumeItemListStart
+            \resumeItem{Full-stack platform with Next.js frontend, FastAPI backend, PostgreSQL, and XGBoost ML model achieving 68\% accuracy across 9 leagues.}
+            \resumeItem{Real-time odds via WebSockets, value bet detection, and automated batch prediction pipeline processing 500+ matches.}
+            \resumeItem{Docker Compose deployment (3 containers), Alembic migrations, CI/CD pipeline, and PDF report generation.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Faceneed — Beauty E-Commerce Platform} \emph{}}{}
+          \resumeItemListStart
+            \resumeItem{Luxury beauty e-commerce platform featuring real-time product feeds, cart persistence, and admin dashboard.}
+            \resumeItem{Built with React 19, Vite, Tailwind CSS 4, Framer Motion, and Zustand for state management.}
+            \resumeItem{Responsive glassmorphism UI with dynamic theming, filterable catalog, and localStorage persistence.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Infinity Gym — Immersive Gym Website} \emph{}}{}
+          \resumeItemListStart
+            \resumeItem{Immersive gym website with 3D graphics, smooth scrolling, and AI integration built with React 19, Vite, and TypeScript.}
+            \resumeItem{Three.js 3D scenes, GSAP scroll animations, Lenis smooth scrolling, and Google Gemini AI integration.}
+            \resumeItem{Express backend, dragging infinite slider, side navigation with wipe effect, and responsive design.}
+          \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}, itemsep=2pt, parsep=0pt]
+    \small{\item{
+     \textbf{Languages}{: TypeScript, JavaScript, Python, SQL, Java, C/C++, HTML/CSS, Bash} \\
+     \textbf{Frontend}{: React 19, Next.js, TypeScript, Tailwind CSS, Framer Motion, GSAP, Three.js, Vite} \\
+     \textbf{Backend}{: Node.js, Express.js, Django, FastAPI, Socket.io, Prisma ORM} \\
+     \textbf{DevOps \& Tools}{: Git, Docker, Docker Compose, GitHub Actions, Cloudflare, Postman} \\
+     \textbf{Databases}{: PostgreSQL, MySQL, MongoDB, Redis, PouchDB} \\
+     \textbf{Testing}{: Vitest, Jest, React Testing Library, Pytest} \\
+     \textbf{AI/ML}{: XGBoost, Scikit-learn, LLM API Integration}
+    }}
+ \end{itemize}
+
+%-----------LANGUAGES-----------
+\section{Languages}
+ \begin{itemize}[leftmargin=0.15in, label={}, itemsep=2pt, parsep=0pt]
+    \small{\item{
+     \textbf{English}{: Native Speaker} \\
+     \textbf{French}{: Conversational}
+    }}
+ \end{itemize}
+
+%-------------------------------------------
+\end{document}

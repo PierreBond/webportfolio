@@ -42,15 +42,6 @@ const projects: Project[] = [
   },
   {
     id: "04",
-    title: "SILO",
-    metricLabel: "TYPE",
-    metricValue: "Barter Trading Mobile App",
-    description: "Mobile-first barter trading app. List items, find trades, chat with partners.",
-    techStack: ["React", "TypeScript", "Tailwind", "Framer Motion", "Vitest"],
-    link: "https://silo-sand.vercel.app/#/"
-  },
-  {
-    id: "05",
     title: "INVENTORY ADVISOR",
     metricLabel: "TYPE",
     metricValue: "Offline Inventory Management PWA",
@@ -59,7 +50,7 @@ const projects: Project[] = [
     link: "https://inventory-advisor.vercel.app/"
   },
   {
-    id: "06",
+    id: "05",
     title: "PLACEPAL",
     metricLabel: "TYPE",
     metricValue: "Apartment Search Platform",
